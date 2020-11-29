@@ -1,0 +1,51 @@
+<%- include ('partials/_header')  %>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+        <td>ID</td>
+        <td>User</td>
+        <td>Date</td>
+        <td>Task</td>
+        <td>Edit/Delete</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (data) { %>
+    <% for(var i = 0; i < data.length; i++) { %>
+    <tr>
+      <td><%= (i + 1) %></td>
+      <td><%= data[i].user %></td>
+      <td><%= data[i].date %></td>
+      <td><%= data[i].task %></td>
+      <td>
+        <a href="/delete/<%= data[i].id%>" class= "btn btn-danger">Delete</a>
+        <a href="/update/<%= data[i].id%>" class= "btn btn-info">Edit</a>
+      </td>
+    <% } %>
+    <%  } %>
+    </tr>
+  </tbody>
+</div>
+
+<div class= "card">
+    <div class="card-body">
+        <form action="/add" method="post">
+            <div class="form-group">
+            <input type="text" name="user" placeholder="user" class="form-control">
+            </div>
+            <div class="form-group">
+            <input type="text" name="date" placeholder="date" class="form-control">
+            </div>
+            <div class="form-group">
+            <input type="text" name="task" placeholder="task" class="form-control">
+            </div>
+            <button type = "submit" class= "btn btn-primary">
+                Save Activity
+            </button>
+        </form>
+      </div>
+
+
+
+<%- include ('partials/_footer')  %>
